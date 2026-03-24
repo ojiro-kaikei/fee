@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>報酬規程 | 小代会計事務所</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:   #1A3A5C;
+  --teal:   #0F6E56;
+  --teal2:  #1D9E75;
+  --sand:   #F7F4EF;
+  --ink:    #222222;
+  --muted:  #666666;
+  --border: #D8D4CC;
+  --white:  #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--sand);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* ── HEADER ─────────────────────────────── */
+header {
+  background: var(--navy);
+  color: var(--white);
+  padding: 3.5rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,0.02) 40px,
+    rgba(255,255,255,0.02) 41px
+  );
+}
+
+.header-inner { position: relative; z-index: 1; }
+
+.office-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1rem, 3vw, 1.15rem);
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 0.6rem;
+}
+
+.page-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+
+.subtitle-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.12em;
+}
+.subtitle-bar::before,
+.subtitle-bar::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: rgba(255,255,255,0.3);
+}
+
+/* ── NAV ANCHOR ────────────────────────── */
+.toc {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.toc a {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.3rem 1rem;
+  letter-spacing: 0.05em;
+  border-right: 1px solid var(--border);
+  transition: color 0.2s;
+}
+.toc a:last-child { border-right: none; }
+.toc a:hover { color: var(--teal); }
+
+/* ── MAIN ───────────────────────────────── */
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+/* ── SECTION ────────────────────────────── */
+.section {
+  margin-bottom: 3.5rem;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 2px solid var(--teal2);
+}
+
+.section-num {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--teal2);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 0.05em;
+}
+
+/* ── TABLE ───────────────────────────────── */
+.fee-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+}
+
+.fee-table th {
+  background: var(--navy);
+  color: var(--white);
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  padding: 0.65rem 1rem;
+  text-align: left;
+}
+
+.fee-table th.right { text-align: right; }
+.fee-table th.center { text-align: center; }
+
+.fee-table td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  vertical-align: middle;
+  line-height: 1.6;
+}
+
+.fee-table tr:last-child td { border-bottom: none; }
+.fee-table tr:nth-child(even) td { background: #FAFAF8; }
+.fee-table td.right { text-align: right; font-variant-numeric: tabular-nums; }
+.fee-table td.muted { color: var(--muted); font-size: 0.82rem; }
+
+.amt {
+  font-weight: 500;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── NOTE ───────────────────────────────── */
+.note {
+  margin-top: 0.7rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  padding-left: 1em;
+  text-indent: -1em;
+  line-height: 1.7;
+}
+
+/* ── HIGHLIGHT ROW ──────────────────────── */
+.fee-table tr.hl td {
+  background: #EAF5F1;
+  color: var(--teal);
+  font-weight: 500;
+}
+
+/* ── BADGE ───────────────────────────────── */
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.15em 0.55em;
+  border-radius: 3px;
+  background: #E6F4F0;
+  color: var(--teal);
+  font-weight: 500;
+  margin-left: 0.4em;
+  vertical-align: middle;
+}
+
+/* ── CTA ────────────────────────────────── */
+.cta-box {
+  margin-top: 3rem;
+  background: var(--navy);
+  color: var(--white);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.cta-box .cta-head {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.05em;
+}
+
+.cta-box .cta-sub {
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: var(--teal2);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 0.8rem 2.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.cta-btn:hover { background: #0F6E56; transform: translateY(-1px); }
+
+/* ── FOOTER ─────────────────────────────── */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.45);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+/* ── RESPONSIVE ──────────────────────────── */
+@media (max-width: 600px) {
+  .toc { gap: 0; }
+  .toc a { font-size: 0.72rem; padding: 0.3rem 0.6rem; }
+  .fee-table th, .fee-table td { padding: 0.55rem 0.6rem; font-size: 0.82rem; }
+  .section-title { font-size: 1rem; }
+}
+
+/* ── ANIMATION ───────────────────────────── */
+.section { opacity: 0; transform: translateY(16px); transition: opacity 0.5s, transform 0.5s; }
+.section.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <p class="office-name">小代会計事務所</p>
+    <h1 class="page-title">報酬規程</h1>
+    <p class="subtitle-bar">料金表（税別）</p>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#kanmon">月額顧問料</a>
+  <a href="#ketsu">決算・申告料</a>
+  <a href="#tkc">TKCシステム料</a>
+  <a href="#option">追加オプション</a>
+  <a href="#spot">スポット業務</a>
+</nav>
+
+<main>
+
+  <!-- Ⅰ. 月額顧問料 -->
+  <section class="section" id="kanmon">
+    <div class="section-head">
+      <span class="section-num">Ⅰ</span>
+      <h2 class="section-title">月額顧問料</h2>
+    </div>
+    <table class="fee-table">
+      <thead>
+        <tr>
+          <th>売上高（直近期）</th>
+          <th class="right">月額顧問料（税別）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1,000万円 以下</td><td class="right amt">20,000円</td></tr>
+        <tr><td>1,000万円超 〜 5,000万円以下</td><td class="right amt">30,000円</td></tr>
+        <tr><td>5,000万円超 〜 1億円以下</td><td class="right amt">40,000円</td></tr>
+        <tr><td>1億円超 〜 3億円以下</td><td class="right amt">50,000円</td></tr>
+        <tr><td>3億円超 〜 5億円以下</td><td class="right amt">60,000円</td></tr>
+        <tr><td>5億円超 〜 10億円以下</td><td class="right amt">70,000円</td></tr>
+        <tr><td>10億円超</td><td class="right amt">100,000円〜</td></tr>
+      </tbody>
+    </table>
+    <p class="note">※ 売上高は直近期の年間売上高を基準とします。</p>
+  </section>
+
+  <!-- Ⅱ. 決算・申告料 -->
+  <section class="section" id="ketsu">
+    <div class="section-head">
+      <span class="section-num">Ⅱ</span>
+      <h2 class="section-title">決算・申告料</h2>
+    </div>
+    <table class="fee-table">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th class="right">金額（税別）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="hl">
+          <td>法人・個人 決算・申告料</td>
+          <td class="right amt">月額顧問料 × 5ヶ月分</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">※ 消費税申告が必要な場合も上記に含みます。</p>
+  </section>
+
+  <!-- Ⅲ. TKCシステム料 -->
+  <section class="section" id="tkc">
+    <div class="section-head">
+      <span class="section-num">Ⅲ</span>
+      <h2 class="section-title">TKCシステム料</h2>
+    </div>
+    <table class="fee-table">
+      <thead>
+        <tr>
+          <th>プラン</th>
+          <th>適用目安</th>
+          <th class="right">月額（税別）</th>
+          <th class="right">入力指導料（初回・税別）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>まいスタークラウド</strong></td>
+          <td>売上 〜5,000万円</td>
+          <td class="right amt">5,000円</td>
+          <td class="right amt">50,000円</td>
+        </tr>
+        <tr>
+          <td><strong>FX2クラウド</strong></td>
+          <td>売上 5,000万円〜</td>
+          <td class="right amt">10,000円</td>
+          <td class="right amt">150,000円</td>
+        </tr>
+        <tr>
+          <td><strong>FX4クラウド</strong> <span class="badge">自動化</span></td>
+          <td>自動化対応</td>
+          <td class="right amt">70,000円</td>
+          <td class="right amt">450,000円</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">※ TKC所定料金のため変動する場合があります。</p>
+  </section>
+
+  <!-- Ⅳ. 追加オプション -->
+  <section class="section" id="option">
+    <div class="section-head">
+      <span class="section-num">Ⅳ</span>
+      <h2 class="section-title">追加オプション</h2>
+    </div>
+    <table class="fee-table">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th class="right">金額（税別）</th>
+          <th>備考</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>給与計算（〜10名）</td>
+          <td class="right amt">20,000円 / 月</td>
+          <td class="muted">—</td>
+        </tr>
+        <tr>
+          <td>給与計算（11名以上）</td>
+          <td class="right amt">20,000円 ＋ 1名につき1,000円 / 月</td>
+          <td class="muted">例：15名 → 25,000円</td>
+        </tr>
+        <tr>
+          <td>記帳代行</td>
+          <td class="right amt">20,000円〜 / 月</td>
+          <td class="muted">取引量により個別お見積り</td>
+        </tr>
+        <tr>
+          <td>年末調整</td>
+          <td class="right">別途お見積り</td>
+          <td class="muted">—</td>
+        </tr>
+        <tr>
+          <td>償却資産税申告</td>
+          <td class="right">別途お見積り</td>
+          <td class="muted">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Ⅴ. スポット・相続 -->
+  <section class="section" id="spot">
+    <div class="section-head">
+      <span class="section-num">Ⅴ</span>
+      <h2 class="section-title">スポット・相続業務</h2>
+    </div>
+    <table class="fee-table">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th class="right">金額（税別）</th>
+          <th>備考</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>相続税申告</td>
+          <td class="right amt">遺産総額の約1%（目安）</td>
+          <td class="muted">財産の複雑性等により変動</td>
+        </tr>
+        <tr>
+          <td>会社・法人設立支援</td>
+          <td class="right">別途お見積り</td>
+          <td class="muted">定款作成・登記連携含む</td>
+        </tr>
+        <tr>
+          <td>医療法人設立・定款変更</td>
+          <td class="right">別途お見積り</td>
+          <td class="muted">専門対応</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 注記 -->
+  <section class="section">
+    <div style="background: var(--white); border: 1px solid var(--border); padding: 1.5rem 1.8rem; font-size: 0.82rem; color: var(--muted); line-height: 2;">
+      <p style="font-weight:500; color: var(--navy); margin-bottom: 0.5rem; font-size: 0.85rem;">注記</p>
+      <p>・記載金額はすべて税別です。別途消費税（10%）が加算されます。</p>
+      <p>・顧問料の基準となる売上高は直近決算期の年間売上高とします。</p>
+      <p>・給与計算には社会保険・労働保険の手続きは含まれません（別途ご相談）。</p>
+      <p>・税務調査立会い・融資・補助金サポート等はお気軽にご相談ください。</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-box section">
+    <p class="cta-head">まずは無料相談から</p>
+    <p class="cta-sub">料金・サービス内容のご不明点はお気軽にお問い合わせください。<br>初回面談は無料にてご対応しています。</p>
+    <a href="#" class="cta-btn">お問い合わせはこちら</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; 小代会計事務所　〒大分市　 ｜　記載金額はすべて税別（消費税別途）</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.section').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
